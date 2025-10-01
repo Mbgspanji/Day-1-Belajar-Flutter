@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
@@ -11,61 +12,112 @@ class Page2 extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Foto Profil + Nama
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/profil.jpg'),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              "Moh. Bagus Panji Arifian",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Column(
+            children: [
+              // Foto Profil
+              const CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/profil.jpg'),
+              ),
+              const SizedBox(height: 10),
+              const SizedBox(height: 16),
 
-            const SizedBox(height: 20),
+              // 3 Row Info
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  children: [
 
-            // About
-            // About
-            _buildCard(
-              title: "About",
-              content:
-                  "Saya adalah seorang pelajar di SMK Wikrama Bogor jurusan Rekayasa Perangkat Lunak. Saya memiliki minat yang besar dalam pengembangan perangkat lunak dan teknologi. Saya selalu berusaha untuk belajar hal-hal baru dan mengembangkan keterampilan saya di bidang ini.",
-              color: Colors.white,
-            ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.person, color: Colors.black),
+                        SizedBox(width: 8),
+                        Text(
+                          'Halo, saya Moh. Bagus Panji Arifian',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(Icons.school, color: Colors.black),
+                        SizedBox(width: 8),
+                        Text(
+                          'Dari kelas XII RPL 1',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
 
-            // History
-            _buildCard(
-              title: "History",
-              content:
-                  "SDN 2 Cicurug (2014-2019)\ MTS Assadah (2019-2023)\ SMK Wikrama Bogor (2023-Sekarang)",
-              color: Colors.white,
-            ),
-            // Skill
-            _buildSkillCard(
-              title: "Skill",
-              skills: [
-                "HTML",
-                "CSS",
-                "Javascript",
-                "Flutter",
-                "Java",
-                "PHP",
-                "Laravel",
-                "Node.js",
-                "React",
-                "Vue.js",
-              ],
-              color: Colors.white,
-            ),
-          ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // IconButton(
+                        //   icon: const Icon(Icons.whatsapp, color: Colors.green),
+                        //   onPressed: () {
+                        //     // Tambahkan aksi WhatsApp
+                        //   },
+                        // ),
+                        IconButton(
+                          icon: const Icon(Icons.email, color: Colors.red),
+                          onPressed: () {
+                            // Tambahkan aksi Email
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              _buildCard(
+                title: "About",
+                content:
+                    "Saya adalah seorang pelajar di SMK Wikrama Bogor jurusan Rekayasa Perangkat Lunak. Saya memiliki minat yang besar dalam pengembangan perangkat lunak dan teknologi. Saya selalu berusaha untuk belajar hal-hal baru dan mengembangkan keterampilan saya di bidang ini.",
+                color: Colors.white,
+              ),
+
+              _buildCard(
+                title: "History",
+                content:
+                    "SDN 2 Cicurug (2014-2019)\ MTS Assadah (2019-2023)\ SMK Wikrama Bogor (2023-Sekarang)",
+                color: Colors.white,
+              ),
+
+              
+              _buildSkillCard(
+                title: "Skill",
+                skills: [
+                  "HTML",
+                  "CSS",
+                  "Javascript",
+                  "Flutter",
+                  "Java",
+                  "PHP",
+                  "Laravel",
+                  "Node.js",
+                  "React",
+                  "Vue.js",
+                ],
+                color: Colors.white,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -135,33 +187,24 @@ class Page2 extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-
-          Padding(
-            padding: const EdgeInsets.only(
-              right: 8.0,
-            ), 
-            child: Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: skills
-                  .map(
-                    (skill) => Chip(
-                      label: Text(
-                        skill,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                        ),
-                      ),
-                      backgroundColor: const Color.fromARGB(255, 34, 25, 159),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: skills
+                .map(
+                  (skill) => Chip(
+                    label: Text(
+                      skill,
+                      style: const TextStyle(fontSize: 14, color: Colors.white),
                     ),
-                  )
-                  .toList(),
-            ),
+                    backgroundColor: const Color.fromARGB(255, 34, 25, 159),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                  ),
+                )
+                .toList(),
           ),
         ],
       ),

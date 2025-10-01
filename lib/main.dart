@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'page2.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: HomePage(),
-  ));
+  runApp(
+    const MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()),
+  );
 }
 
 class HomePage extends StatelessWidget {
@@ -28,11 +27,11 @@ class HomePage extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
-            color: const Color.fromRGBO(252, 219, 138, 1),
+            color: const Color.fromARGB(255, 134, 132, 128),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
-                mainAxisSize: MainAxisSize.min, // biar card menyesuaikan isi
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   const CircleAvatar(
@@ -53,10 +52,7 @@ class HomePage extends StatelessWidget {
                   const Text(
                     'Vocational High School Student at SMK Wirama Bogor',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
-                    ),
+                    style: TextStyle(fontSize: 16.0, color: Colors.black),
                   ),
                   const SizedBox(height: 20),
                   TextButton(
@@ -71,12 +67,18 @@ class HomePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const Page2(),
-                        ),
+                        MaterialPageRoute(builder: (context) => const Page2()),
                       );
                     },
-                    child: const Text('See More'),
+                    child: Row(
+                      mainAxisSize:
+                          MainAxisSize.min, // biar button menyesuaikan isi
+                      children: const [
+                        Text('See More'),
+                        SizedBox(width: 8), // jarak antara teks dan ikon
+                        Icon(Icons.arrow_forward), // ikon panah kanan
+                      ],
+                    ),
                   ),
                 ],
               ),
