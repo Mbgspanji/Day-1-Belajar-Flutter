@@ -33,20 +33,21 @@ class Page2 extends StatelessWidget {
             const SizedBox(height: 20),
 
             // About
+            // About
             _buildCard(
               title: "About",
-              content: "Saya Adalah Seorang Junior Web Developer.",
-              color: const Color.fromARGB(255, 252, 219, 138),
+              content:
+                  "Saya adalah seorang pelajar di SMK Wikrama Bogor jurusan Rekayasa Perangkat Lunak. Saya memiliki minat yang besar dalam pengembangan perangkat lunak dan teknologi. Saya selalu berusaha untuk belajar hal-hal baru dan mengembangkan keterampilan saya di bidang ini.",
+              color: Colors.white,
             ),
 
             // History
             _buildCard(
               title: "History",
               content:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                  "SDN 2 Cicurug (2014-2019)\ MTS Assadah (2019-2023)\ SMK Wikrama Bogor (2023-Sekarang)",
               color: Colors.white,
             ),
-
             // Skill
             _buildSkillCard(
               title: "Skill",
@@ -62,7 +63,7 @@ class Page2 extends StatelessWidget {
                 "React",
                 "Vue.js",
               ],
-              color: const Color.fromARGB(255, 252, 219, 138),
+              color: Colors.white,
             ),
           ],
         ),
@@ -112,7 +113,7 @@ class Page2 extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white, // supaya sejajar dengan History (card putih)
+        color: color,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -125,44 +126,42 @@ class Page2 extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Judul Skill (kuning)
           Text(
             title,
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 252, 219, 138), // kuning
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 12),
 
-          // List skill dalam bentuk chips kuning dengan teks putih
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: skills
-                .map(
-                  (skill) => Chip(
-                    label: Text(
-                      skill,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.white, // teks putih
+          Padding(
+            padding: const EdgeInsets.only(
+              right: 8.0,
+            ), 
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: skills
+                  .map(
+                    (skill) => Chip(
+                      label: Text(
+                        skill,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                      backgroundColor: const Color.fromARGB(255, 34, 25, 159),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                     ),
-                    backgroundColor: const Color.fromARGB(
-                      255,
-                      252,
-                      219,
-                      138,
-                    ), // chip kuning
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                  ),
-                )
-                .toList(),
+                  )
+                  .toList(),
+            ),
           ),
         ],
       ),
