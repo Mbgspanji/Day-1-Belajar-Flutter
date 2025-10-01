@@ -72,11 +72,11 @@ class HomePage extends StatelessWidget {
                     },
                     child: Row(
                       mainAxisSize:
-                          MainAxisSize.min, // biar button menyesuaikan isi
+                          MainAxisSize.min, 
                       children: const [
                         Text('See More'),
-                        SizedBox(width: 8), // jarak antara teks dan ikon
-                        Icon(Icons.arrow_forward), // ikon panah kanan
+                        SizedBox(width: 8), 
+                        Icon(Icons.arrow_forward), 
                       ],
                     ),
                   ),
