@@ -72,7 +72,7 @@ class Page2 extends StatelessWidget {
                         //   },
                         // ),
                         IconButton(
-                          icon: const Icon(Icons.email, color: Colors.red),
+                          icon: const Icon(Icons.email, color: Color.fromARGB(255, 0, 0, 0)),
                           onPressed: () {
                             // Tambahkan aksi Email
                           },
