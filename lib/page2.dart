@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
@@ -25,70 +26,94 @@ class Page2 extends StatelessWidget {
                 radius: 50,
                 backgroundImage: AssetImage('assets/profil.jpg'),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 16),
+              const Text(
+                'Moh. Bagus Panji Arifian',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+
               const SizedBox(height: 16),
 
-              // 3 Row Info
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.person, color: Colors.black),
-                        SizedBox(width: 8),
-                        Text(
-                          'Halo, saya Moh. Bagus Panji Arifian',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.school, color: Colors.black),
-                        SizedBox(width: 8),
-                        Text(
-                          'Dari kelas XII RPL 1',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // IconButton(
-                        //   icon: const Icon(Icons.whatsapp, color: Colors.green),
-                        //   onPressed: () {
-                        //     // Tambahkan aksi WhatsApp
-                        //   },
-                        // ),
-                        IconButton(
-                          icon: const Icon(Icons.email, color: Color.fromARGB(255, 0, 0, 0)),
-                          onPressed: () {
-                            // Tambahkan aksi Email
-                          },
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: const [
+                    //     const Icon( Icons.person, color: Colors.black),
+                    //     SizedBox(width: 8),
+                    //     Text(
+                    //       'Moh. Bagus Panji Arifian',
+                    //       style: TextStyle(
+                    //         fontSize: 24,
+                    //         fontWeight: FontWeight.bold,
+                    //         color: Colors.black,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    // const SizedBox(height: 10),
+
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     const Icon(Icons.email, color: Colors.black),
+                    //     const SizedBox(width: 8),
+                    //     GestureDetector(
+                    //       onTap: () {
+                    //         _launchURL("mailto:miyukazuki188@email.com");
+                    //       },
+                    //       child: const Text(
+                    //         'Email: miyukazuki188@email.com',
+                    //         style: TextStyle(
+                    //           fontSize: 16,
+                    //           color: Colors.blue,
+                    //           decoration: TextDecoration.underline,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+
+                    // const SizedBox(height: 10),
+
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     const Icon(FontAwesomeIcons.phone, color: Colors.black),
+                    //     const SizedBox(width: 8),
+                    //     GestureDetector(
+                    //       onTap: () {
+                    //         _launchURL("https://wa.me/6283115749647");
+                    //       },
+                    //       child: const Text(
+                    //         'Whatsapp: 083115749647',
+                    //         style: TextStyle(
+                    //           fontSize: 16,
+                    //           color: Colors.blue,
+                    //           decoration: TextDecoration.underline,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 20),
+              // const SizedBox(height: 20),
 
               _buildCard(
                 title: "About",
                 content:
-                    "Saya adalah seorang pelajar di SMK Wikrama Bogor jurusan Rekayasa Perangkat Lunak. Saya memiliki minat yang besar dalam pengembangan perangkat lunak dan teknologi. Saya selalu berusaha untuk belajar hal-hal baru dan mengembangkan keterampilan saya di bidang ini.",
+                    "Saya adalah seorang pelajar di SMK Wikrama Bogor jurusan Rekayasa Perangkat Lunak. Saya memiliki minat yang besar dalam pengembangan perangkat lunak dan teknologi.",
                 color: Colors.white,
               ),
 
@@ -99,7 +124,6 @@ class Page2 extends StatelessWidget {
                 color: Colors.white,
               ),
 
-              
               _buildSkillCard(
                 title: "Skill",
                 skills: [
@@ -123,6 +147,7 @@ class Page2 extends StatelessWidget {
     );
   }
 
+  // Fungsi untuk card biasa
   Widget _buildCard({
     required String title,
     required String content,
@@ -155,6 +180,7 @@ class Page2 extends StatelessWidget {
       ),
     );
   }
+
 
   Widget _buildSkillCard({
     required String title,
@@ -195,7 +221,7 @@ class Page2 extends StatelessWidget {
                   (skill) => Chip(
                     label: Text(
                       skill,
-                      style: const TextStyle(fontSize: 14, color: Colors.white),
+                      style: const TextStyle(fontSize: 17, color: Colors.white),
                     ),
                     backgroundColor: const Color.fromARGB(255, 34, 25, 159),
                     padding: const EdgeInsets.symmetric(
@@ -209,5 +235,14 @@ class Page2 extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  static Future<void> _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Tidak bisa membuka $url';
+    }
   }
 }
